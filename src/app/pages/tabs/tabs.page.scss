@@ -1,0 +1,21 @@
+ion-header ion-toolbar {
+    ion-title{
+        font-size: 1.4rem;
+    }
+    ion-button ion-icon {
+        font-size: 2.5rem;
+    }
+}
+ion-tabs{
+    ion-tab-bar {
+        ion-tab-button {
+            font-size: .6rem;
+            ion-icon {
+                font-size: 1.5rem;
+            }
+        }
+        .middle ion-icon {
+            font-size: 2.5rem;
+        }
+    }
+}
