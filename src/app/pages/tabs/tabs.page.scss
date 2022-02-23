@@ -1,17 +1,7 @@
-ion-header ion-toolbar {
-    ion-title{
-        font-size: 1.4rem;
-    }
-    ion-button ion-icon {
-        font-size: 5rem;
-    }
-    ion-button .logo {
-        font-size: 5rem;
-    }
-}
+
 ion-tabs{
-    top: 76px;
-    height: calc(100% - 76px);
+    // top: 76px;
+    // height: calc(100% - 76px);
     ion-tab-bar {
         ion-tab-button {
             font-size: .6rem;

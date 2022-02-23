@@ -1,0 +1,26 @@
+// ion-header ion-toolbar {
+//     ion-title{
+//         font-size: 1.4rem;
+//     }
+//     ion-button ion-icon {
+//         font-size: 5rem;
+//     }
+//     ion-button .logo {
+//         font-size: 5rem;
+//     }
+// }
+ion-card{
+    ion-card-header{
+        ion-card-subtitle{
+            font-size: .8rem;
+        }
+        ion-card-title{
+            font-size: 1rem;
+        }
+    }
+    ion-card-content{
+        img{
+            object-fit: cover;
+        }
+    }
+}
