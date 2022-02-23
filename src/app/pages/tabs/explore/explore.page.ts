@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+import { environment } from "src/environments/environment";
 @Component({
   selector: 'app-explore',
   templateUrl: './explore.page.html',
@@ -11,5 +12,6 @@ export class ExplorePage implements OnInit {
 
   ngOnInit() {
   }
+  environment=environment;
 
 }
