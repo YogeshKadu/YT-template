@@ -1,3 +1,29 @@
-<p>
-  player works!
-</p>
+<ion-content [fullscreen]="true" color="light">
+  <div class="player">
+    <ion-img [src]="image.download_url"></ion-img>
+  </div>
+  <ion-item color="light" lines="none">
+    <ion-label class="ion-text-wrap">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloribus natus consectetur fuga?</ion-label>
+  </ion-item>
+  
+  <div class="btn-sliders">
+
+  </div>
+
+  <div class="profile">
+    <ion-item color="light" lines="full">
+      <ion-avatar slot="start">
+        <img [src]="profile.picture.thumbnail" />
+      </ion-avatar>
+      <ion-label>
+        <b>{{ profile.name.title+"."+profile.name.first +" "+profile.name.last }}</b>
+        <p>{{ image.author }}</p>
+      </ion-label>
+      <ion-text color="danger">
+        <b>Subscribe</b>
+      </ion-text>
+    </ion-item>
+  </div>
+  <div class="account-detail">
+  </div>
+</ion-content>

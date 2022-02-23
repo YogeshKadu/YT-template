@@ -6,9 +6,15 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./player.component.scss'],
 })
 export class PlayerComponent implements OnInit {
-  @Input() title;
+  @Input() profile;
+  @Input() image;
   constructor() { }
 
   ngOnInit() {}
 
+  ionViewDidEnter() {
+    console.log(this.profile);
+    console.log(this.image);
+    
+  }
 }

@@ -18,13 +18,25 @@ export class HomePage implements OnInit {
     , private modalController: ModalController
     ) { }
   homeList;
-  ngOnInit() {
-    // console.log(this.routerOutlet.component.routerOutlet.nativeEl);
-    // this.routerOutl/et.
-    this.ytRequestService.getHomeFeed()
-      .then((response:[]) => this.homeList = response)
-      .catch((response:any) => console.log(response))
-      .finally(() => console.log(this.homeList));
+  profiles;
+  images;
+  async ngOnInit() {
+    // this.ytRequestService.getHomeFeed()
+    //   .then((response:[]) => this.homeList = response)
+    //   .catch((response:any) => console.log(response))
+    //   .finally(() => console.log(this.homeList));
+    await this.ytRequestService.getProfile()
+      .then((response:any) => {
+        this.profiles = response.results;
+        console.log(response)
+      })
+      .catch((response) => console.warn(response));
+      await this.ytRequestService.getImage()
+      .then((response:any) => {
+        this.images = response;
+        console.log(response)
+      })
+      .catch((response) => console.warn(response));
   }
   async presentToast(message) {
     const toast = await this.toastController.create({
@@ -35,28 +47,27 @@ export class HomePage implements OnInit {
   }
   loadData(ev){
     console.log("Next:",ev);
-    this.ytRequestService.getNextPageData()
-    .then((response:[]) => {
-      this.homeList = this.homeList.concat(response)
-    })
-    .catch((response:any) => {
-      this.presentToast(response);
-    })
-    .finally(() => {
-      ev.target.complete();
-      console.log(this.homeList)
-    });
+    // this.ytRequestService.getNextPageData()
+    // .then((response:[]) => {
+    //   this.homeList = this.homeList.concat(response)
+    // })
+    // .catch((response:any) => {
+    //   this.presentToast(response);
+    // })
+    // .finally(() => {
+    //   ev.target.complete();
+    //   console.log(this.homeList)
+    // });
   }
   doRefresh(ev){
     console.log("refresh:",ev);
   }
   
-  async presentPlayerModule(){
+  async presentPlayerModule(index){
     const modal = await this.modalController.create({
       component: PlayerComponent,
       swipeToClose: true,
-      componentProps:{},
-      // presentingElement: this.routerOutlet.nativeEl
+      componentProps:{profile:this.profiles[index],image:this.images[index]}
     });
     return await modal.present();
   }
