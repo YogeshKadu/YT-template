@@ -8,6 +8,8 @@ import { HomePageRoutingModule } from './home-routing.module';
 
 import { HomePage } from './home.page';
 import { SharedModule } from "src/app/_shared/shared.module";
+import { SwiperModule } from "swiper/angular";
+
 @NgModule({
   imports: [
     CommonModule,
@@ -15,6 +17,7 @@ import { SharedModule } from "src/app/_shared/shared.module";
     IonicModule,
     HomePageRoutingModule
     , SharedModule
+    , SwiperModule
   ],
   declarations: [HomePage]
 })

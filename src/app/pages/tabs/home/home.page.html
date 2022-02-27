@@ -21,7 +21,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" color="light">
+<ion-content [fullscreen]="false" color="light">
   <ion-refresher
     slot="fixed"
     (ionRefresh)="doRefresh($event)"
@@ -31,58 +31,97 @@
   >
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
-
+  <swiper
+  [slidesPerView]="'auto'"
+  [centeredSlides]="false"
+  [spaceBetween]="2">
+  <ng-template swiperSlide>
+    <ion-chip>
+      <ion-label>All</ion-label>
+    </ion-chip>
+  </ng-template>
+  <ng-template swiperSlide>
+    <ion-chip>
+      <ion-label>Mix</ion-label>
+    </ion-chip>
+  </ng-template>
+  <ng-template swiperSlide>
+    <ion-chip>
+      <ion-label>Music</ion-label>
+    </ion-chip>
+  </ng-template>
+  <ng-template swiperSlide>
+    <ion-chip>
+      <ion-label>Movies</ion-label>
+    </ion-chip>
+  </ng-template>
+  <ng-template swiperSlide>
+    <ion-chip>
+      <ion-label>TV Shows</ion-label>
+    </ion-chip>
+  </ng-template>
+  <ng-template swiperSlide>
+    <ion-chip>
+      <ion-label>Gaming</ion-label>
+    </ion-chip>
+  </ng-template>
+  <ng-template swiperSlide>
+    <ion-chip>
+      <ion-label>Laptop</ion-label>
+    </ion-chip>
+  </ng-template>
+  <ng-template swiperSlide>
+    <ion-chip>
+      <ion-label>Conputer</ion-label>
+    </ion-chip>
+  </ng-template>
+  <ng-template swiperSlide>
+    <ion-chip>
+      <ion-label>ComputerProgramming</ion-label>
+    </ion-chip>
+  </ng-template>
+</swiper>
   <ion-grid>
     <ion-row>
-      <ion-col size-sm="12" size-md="6" size-lg="4" size-xl="3" *ngFor="let profile of profiles;let i=index">
+      <ion-col size-sm="12" size-md="6" size-lg="4" size-xl="3" *ngFor="let item of homeList;let i=index">
         <ion-card class="ion-no-margin">
-          <ion-card-content class="ion-no-padding" (click)="presentPlayerModule(i)" *ngIf="images">
-            <ion-img [src]="images[i].download_url" [alt]="images[i].id"></ion-img>
+          <ion-card-content class="ion-no-padding ion-text-center" (click)="presentPlayerModule(i)">
+            <img [src]="item.webformatURL" [alt]="i"/>
           </ion-card-content>
-          <ion-item>
-            <ion-avatar slot="start">
-              <img [src]="profile.picture.thumbnail" />
-            </ion-avatar>
-            <ion-label *ngIf="images">
-              <b>{{profile.name.title+"."+profile.name.first +" "+profile.name.last}}</b>
-              <p>{{ images[i].author }}</p>
-            </ion-label>
-          </ion-item>
+          <ion-card-content class="ion-no-padding ion-no-margin">
+            <ion-item lines="none">
+              <ion-avatar slot="start">
+                <img [src]="item.userImageURL" [alt]="i+'no'" />
+              </ion-avatar>
+              <ion-label>
+                <b>{{item.user}}</b>
+                <p>{{ item.tags }}</p>
+              </ion-label>
+            </ion-item>
+          </ion-card-content>
         </ion-card>
       </ion-col>
     </ion-row>
-    </ion-grid>
+  </ion-grid>
+
+  <div class="player-module" *ngIf="selectedItem != undefined">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-button>
+          <ion-icon slot="start" name="add"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-buttons slot="end">
+        <ion-button>
+          <ion-icon slot="start" name="add"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+    <app-player [relatedFeed]="homeList" [item]="selectedItem"></app-player>
+  </div>
 
 
 
-  <!-- <ion-card *ngFor="let profile of profiles;let i=index">
-    <ion-card-content class="ion-no-padding" (click)="presentPlayerModule(i)" *ngIf="images">
-      <ion-img [src]="images[i].download_url" [alt]="images[i].id"></ion-img>
-    </ion-card-content>
-    <ion-item>
-      <ion-avatar slot="start">
-        <img [src]="profile.picture.thumbnail" />
-      </ion-avatar>
-      <ion-label *ngIf="images">
-        <b>{{profile.name.title+"."+profile.name.first +" "+profile.name.last}}</b>
-        <p>{{ images[i].author }}</p>
-      </ion-label>
-    </ion-item>
-  </ion-card> -->
-
-
-
-
-
-  <!-- <ion-card *ngFor="let item of homeList">
-    <ion-card-content class="ion-no-padding" (click)="presentPlayerModule()">
-      <ion-img [src]="item.snippet.thumbnails.high.url" alt="demo"></ion-img>
-    </ion-card-content>
-    <ion-card-header>
-      <ion-card-title>{{item.snippet.title}}</ion-card-title>
-      <ion-card-subtitle>{{item.snippet.channelTitle}}</ion-card-subtitle>
-    </ion-card-header>
-  </ion-card> -->
   <ion-infinite-scroll threshold="1%" (ionInfinite)="loadData($event)">
     <ion-infinite-scroll-content
       loadingSpinner="bubbles"
@@ -90,5 +129,4 @@
     >
     </ion-infinite-scroll-content>
   </ion-infinite-scroll>
-
 </ion-content>

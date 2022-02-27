@@ -1,29 +1,74 @@
-<ion-content [fullscreen]="true" color="light">
+<div class="ion-content" color="light">
   <div class="player">
-    <ion-img [src]="image.download_url"></ion-img>
+    <ion-img [src]="item.webformatURL"></ion-img>
   </div>
   <ion-item color="light" lines="none">
     <ion-label class="ion-text-wrap">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloribus natus consectetur fuga?</ion-label>
   </ion-item>
-  
-  <div class="btn-sliders">
 
-  </div>
+  <swiper
+    [slidesPerView]="'auto'"
+    [centeredSlides]="false"
+    [spaceBetween]="30"
+    [slidesOffsetBefore]="30"
+    [slidesOffsetAfter]="30">
+    <ng-template swiperSlide>
+        <ion-icon slot="start" name="thumbs-up-outline"></ion-icon>
+        <ion-label>Like</ion-label>
+    </ng-template>
+    <ng-template swiperSlide>
+        <ion-icon slot="start" name="thumbs-down-outline"></ion-icon>
+        <ion-label>Dislike</ion-label>
+    </ng-template>
+    <ng-template swiperSlide>
+        <ion-icon slot="start" name="arrow-redo-outline"></ion-icon>
+        <ion-label>Share</ion-label>
+    </ng-template>
+    <ng-template swiperSlide>
+        <ion-icon slot="start" name="duplicate-outline"></ion-icon>
+        <ion-label>Save</ion-label>
+    </ng-template>
+    <ng-template swiperSlide>
+      <ion-icon name="arrow-down"></ion-icon>
+        <ion-label>Download</ion-label>
+    </ng-template>
+    <ng-template swiperSlide>
+      <ion-icon slot="start" name="flag-outline"></ion-icon>
+      <ion-label>Report</ion-label>
+    </ng-template>
+  </swiper>
 
   <div class="profile">
     <ion-item color="light" lines="full">
       <ion-avatar slot="start">
-        <img [src]="profile.picture.thumbnail" />
+        <img [src]="item.userImageURL" />
       </ion-avatar>
       <ion-label>
-        <b>{{ profile.name.title+"."+profile.name.first +" "+profile.name.last }}</b>
-        <p>{{ image.author }}</p>
+        <b>{{item.user}}</b>
+        <p>{{ item.tags }}</p>
       </ion-label>
       <ion-text color="danger">
         <b>Subscribe</b>
       </ion-text>
     </ion-item>
   </div>
-  <div class="account-detail">
-  </div>
-</ion-content>
+  <ion-item color="light">
+    <ion-label>Comments <ion-text color="medium">• 67</ion-text></ion-label>
+  </ion-item>
+
+  <ion-card class="ion-no-margin" *ngFor="let item of relatedFeed">
+    <ion-card-content class="ion-no-padding ion-text-center">
+      <img [src]="item.webformatURL" [alt]="i+'aa'"/>
+    </ion-card-content>
+    <ion-item lines="none">
+      <ion-avatar slot="start">
+        <img [src]="item.userImageURL" />
+      </ion-avatar>
+      <ion-label>
+        <b>{{item.user}}</b>
+        <p>{{ item.tags }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-card>
+
+</div>

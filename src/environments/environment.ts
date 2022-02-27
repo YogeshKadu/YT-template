@@ -4,10 +4,10 @@
 
 export const environment = {
   production: false,
-  url:"https://www.googleapis.com/youtube/v3/",
-  key:"AIzaSyCM0jOKe4SsjD3681c3QKVenMPBkZFIZUk"
+  url:"https://pixabay.com/api/",
+  key:"22351720-179df1098e4d006be7ca295b0"
 };
-
+// VideoURL = https://pixabay.com/api/videos/
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.

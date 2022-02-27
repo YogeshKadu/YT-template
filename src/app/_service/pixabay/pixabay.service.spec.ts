@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { YTRequestService } from './yt-request.service';
+import { PixabayService } from './pixabay.service';
 
-describe('YTRequestService', () => {
-  let service: YTRequestService;
+describe('PixabayService', () => {
+  let service: PixabayService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(YTRequestService);
+    service = TestBed.inject(PixabayService);
   });
 
   it('should be created', () => {
